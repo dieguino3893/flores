@@ -4,34 +4,40 @@ var lyrics = document.querySelector("#lyrics");
 
 // Array de objetos que contiene cada línea y su tiempo de aparición en segundos
 var lyricsData = [
-  { text: "At the time", time: 15 },
-  { text: "The whisper of birds", time: 18 },
-  { text: "Lonely before the sun cried", time: 27 },
-  { text: "Fell from the sky", time: 32 },
-  { text: "Like water drops", time: 33 },
-  { text: "Where I'm now? I don't know why", time: 41 },
-  { text: "Nice butterflies in my hands", time: 47 },
-  { text: "Too much light for twilight", time: 54 },
-  { text: "In the mood for the flowers love", time: 59 },
-  { text: "That vision", time: 67 },
-  { text: "Really strong, blew my mind", time: 72 },
-  { text: "Silence Let me see what it was", time: 78 },
-  { text: "I only want to live in clouds", time: 83 },
-  { text: "Where I'm now? I don't know why", time: 91 },
-  { text: "Nice butterflies in my hands", time: 97 },
-  { text: "Too much light for twilight", time: 104 },
-  { text: "In the mood for the flowers love", time: 108 },
-  { text: "At the time", time: 144 },
-  { text: "The whisper of birds", time: 148 },
-  { text: "Lonely before the sun cried", time: 153 },
-  { text: "Fell from the sky", time: 158 },
-  { text: "Like water drops", time: 164 },
-  { text: "Where I'm now? I don't know why", time: 169 },
-  { text: "Nice butterflies in my hands", time: 176 },
-  { text: "Too much light for twilight", time: 183 },
-  { text: "In the mood for the flowers", time: 188 },
-  { text: "Love.", time: 140 },
+  { text: "Hand in mine, into your ice blues", time: 8 },
+  { text: "And then I'd say to you, We could take to the highway", time: 12 },
+  { text: "With this trunk of ammunition, too", time: 19 },
+  { text: "I'd end my days with you, in a hail of bullets", time: 21 },
+  { text: "I'm trying, I'm trying", time: 30 },
+  { text: "To let you know just how much you mean to me", time: 34 },
+  { text: "And after all the things we put each other through and", time: 41 },
+  { text: "I would drive on, to the end with you", time: 51 },
+  { text: "A liquor store or two keeps the gas tank full", time: 55 },
+  { text: "And I feel like there's nothing left to do", time: 60 },
+  { text: "But prove myself to you, and we'll keep it running", time: 65 },
+  { text: "But this time, I mean it", time: 71 },
+  { text: "I'll let you know just how much you mean to me", time: 76 },
+  { text: "As snow falls on desert sky", time: 82 },
+  { text: "Until the end of everything", time: 86 },
+  { text: "I'm trying, I'm trying", time: 92 },
+  { text: "To let you know how much you mean", time: 95 },
+  { text: "As days fade and nights grow", time: 99 },
+  { text: "And we grow cold", time: 105 },
+  { text: "Until the end, until this pool of blood", time: 112 },
+  { text: "Until this, I mean this, I mean this", time: 118 },
+  { text: "Until the end of", time: 123 },
+  { text: "I'm trying, I'm trying", time: 126 },
+  { text: "To let you know how much you mean", time: 130 },
+  { text: "As days fade and nights grow", time: 135 },
+  { text: "And we grow cold", time: 138 },
+  { text: "But this time, we'll show them", time: 143 },
+  { text: "We'll show them all how much we mean", time: 146 },
+  { text: "As snow falls on desert sky", time: 150 },
+  { text: "Until the end of every", time: 155 },
+  { text: "Lauren <3", time: 155 },
 ];
+
+let lastLine = null;
 
 // Animar las letras
 function updateLyrics() {
@@ -41,32 +47,23 @@ function updateLyrics() {
   );
 
   if (currentLine) {
-    // Calcula la opacidad basada en el tiempo en la línea actual
-    var fadeInDuration = 0.1; // Duración del efecto de aparición en segundos
-    var opacity = Math.min(1, (time - currentLine.time) / fadeInDuration);
-
-    // Aplica el efecto de aparición
-    lyrics.style.opacity = opacity;
-    lyrics.innerHTML = currentLine.text;
-  } else {
-    // Restablece la opacidad y el contenido si no hay una línea actual
-    lyrics.style.opacity = 0;
-    lyrics.innerHTML = "";
+    if (lastLine !== currentLine.text) {
+      lastLine = currentLine.text;
+      lyrics.innerHTML = currentLine.text;
+      lyrics.style.opacity = 1;
+    }
   }
 }
 
 setInterval(updateLyrics, 1000);
 
-//funcion titulo
 // Función para ocultar el título después de 216 segundos
 function ocultarTitulo() {
   var titulo = document.querySelector(".titulo");
-  titulo.style.animation =
-    "fadeOut 3s ease-in-out forwards"; /* Duración y función de temporización de la desaparición */
+  titulo.style.animation = "fadeOut 3s ease-in-out forwards";
   setTimeout(function () {
     titulo.style.display = "none";
-  }, 3000); // Espera 3 segundos antes de ocultar completamente
+  }, 3000);
 }
 
-// Llama a la función después de 216 segundos (216,000 milisegundos)
 setTimeout(ocultarTitulo, 216000);
