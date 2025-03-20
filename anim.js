@@ -34,7 +34,7 @@ var lyricsData = [
   { text: "We'll show them all how much we mean", time: 146 },
   { text: "As snow falls on desert sky", time: 150 },
   { text: "Until the end of every", time: 155 },
-  { text: "Lauren <3", time: 155 },
+  { text: "Lauren <3", time: 160 },
 ];
 
 let lastLine = null;
